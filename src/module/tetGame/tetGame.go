@@ -26,6 +26,12 @@ func InitDB() error {
 	return db.Ping()
 }
 
+func CloseDB() {
+	if db != nil {
+		db.Close()
+	}
+}
+
 /* === Create Player === */
 func CreatePlayer(ctx *gin.Context) {
 	var req struct {

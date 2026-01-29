@@ -17,6 +17,7 @@ func main() {
 	if err := tetGame.InitDB(); err != nil {
 		log.Fatal("DB init failed:", err)
 	}
+	defer tetGame.CloseDB()
 
 	tetGameApi := route.Group("/tet-game")
 	{
