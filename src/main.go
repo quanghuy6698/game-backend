@@ -23,7 +23,7 @@ func main() {
 	{
 		tetGameApi.POST("/create-player", tetGame.CreatePlayer)
 		tetGameApi.GET("/top-100", tetGame.GetTop100)
-		tetGameApi.GET("/save-score", tetGame.SaveScore)
+		tetGameApi.POST("/save-score", tetGame.SaveScore)
 	}
 
 	log.Println("Server running on :8080")
