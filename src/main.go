@@ -21,8 +21,8 @@ func main() {
 
 	tetGameApi := route.Group("/tet-game")
 	{
+		tetGameApi.GET("/leaderboard", tetGame.GetLeaderboard)
 		tetGameApi.POST("/create-player", tetGame.CreatePlayer)
-		tetGameApi.GET("/top-100", tetGame.GetTop100)
 		tetGameApi.POST("/save-score", tetGame.SaveScore)
 	}
 

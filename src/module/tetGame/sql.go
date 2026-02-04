@@ -2,7 +2,7 @@ package tetGame
 
 const insertPlayerSQL = `INSERT INTO player (id, public_id, name) VALUES (?, ?, ?)`
 const insertRankingSQL = `INSERT INTO ranking (player_id, score, skin) VALUES (?, ?, ?)`
-const getRanking100SQL = `
+const getLeaderboardSQL = `
 	SELECT 
 		p.public_id,
 		p.name,
@@ -13,5 +13,5 @@ const getRanking100SQL = `
 	ON r.player_id = p.id 
 	WHERE r.skin = ? 
 	ORDER BY r.score DESC 
-	LIMIT 100
+	LIMIT 20
 `

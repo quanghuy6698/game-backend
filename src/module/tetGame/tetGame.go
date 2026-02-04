@@ -73,8 +73,8 @@ func CreatePlayer(ctx *gin.Context) {
 	})
 }
 
-/* === Get top 100 === */
-func GetTop100(c *gin.Context) {
+/* === Get Leaderboard === */
+func GetLeaderboard(c *gin.Context) {
 	skin := c.Query("skin")
 	if skin == "" {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -85,9 +85,9 @@ func GetTop100(c *gin.Context) {
 		return
 	}
 
-	rows, err := db.Query(getRanking100SQL, skin)
+	rows, err := db.Query(getLeaderboardSQL, skin)
 	if err != nil {
-		log.Println("ERROR EXECUTE SQL GET TOP 100:", err.Error())
+		log.Println("ERROR EXECUTE SQL GET LEADERBOARD:", err.Error())
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"success": false,
 			"data":    gin.H{},
@@ -107,7 +107,7 @@ func GetTop100(c *gin.Context) {
 			&item.Score,
 			&item.Skin,
 		); err != nil {
-			log.Println("ERROR SCAN SQL RESULT TOP 100: ", err.Error())
+			log.Println("ERROR SCAN SQL RESULT LEADERBOARD: ", err.Error())
 			c.JSON(http.StatusInternalServerError, gin.H{
 				"success": false,
 				"data":    gin.H{},
@@ -119,7 +119,7 @@ func GetTop100(c *gin.Context) {
 	}
 
 	if err := rows.Err(); err != nil {
-		log.Println("ERROR GET TOP 100: ", err.Error())
+		log.Println("ERROR GET LEADERBOARD: ", err.Error())
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"success": false,
 			"data":    gin.H{},
