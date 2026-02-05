@@ -6,12 +6,12 @@ const getLeaderboardSQL = `
 	SELECT 
 		p.public_id,
 		p.name,
-		r.score,
-		r.skin 
-	FROM ranking r 
+		s.score,
+		s.skin 
+	FROM score s 
 	JOIN player p 
-	ON r.player_id = p.id 
-	WHERE r.skin = ? 
-	ORDER BY r.score DESC 
-	LIMIT 20
+	ON s.player_id = p.id 
+	WHERE s.skin = ?
+	ORDER BY s.score DESC 
+	LIMIT 20;
 `
