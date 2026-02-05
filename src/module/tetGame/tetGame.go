@@ -97,10 +97,10 @@ func GetLeaderboard(c *gin.Context) {
 	}
 	defer rows.Close()
 
-	result := make([]RankingItem, 0)
+	result := make([]LeaderboardItem, 0)
 
 	for rows.Next() {
-		var item RankingItem
+		var item LeaderboardItem
 		if err := rows.Scan(
 			&item.PublicID,
 			&item.Name,
@@ -152,7 +152,7 @@ func SaveScore(ctx *gin.Context) {
 	}
 
 	_, err := db.Exec(
-		insertRankingSQL,
+		insertScoreSQL,
 		req.PlayerID,
 		req.Score,
 		req.Skin,

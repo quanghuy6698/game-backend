@@ -6,13 +6,13 @@ type Player struct {
 	Name      string    `json:"name"`
 }
 
-type Ranking struct {
+type Score struct {
 	PlayerID string `json:"player_id"`
 	Score    int64  `json:"score"`
 	Skin     string `json:"skin"`
 }
 
-type RankingItem struct {
+type LeaderboardItem struct {
 	PublicID string `json:"public_id"`
 	Name     string `json:"name"`
 	Score    int    `json:"score"`
