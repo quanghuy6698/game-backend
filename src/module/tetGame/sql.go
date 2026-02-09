@@ -1,10 +1,9 @@
 package tetGame
 
-const insertPlayerSQL = `INSERT INTO player (id, public_id, name) VALUES (?, ?, ?)`
+const insertPlayerSQL = `INSERT INTO player (id, name) VALUES (?, ?)`
 const insertScoreSQL = `INSERT INTO score (player_id, score, skin) VALUES (?, ?, ?)`
 const getLeaderboardSQL = `
 	SELECT 
-		p.public_id,
 		p.name,
 		s.score,
 		s.skin 
