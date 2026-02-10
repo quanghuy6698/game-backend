@@ -14,7 +14,10 @@ var db *sql.DB
 
 func InitDB() error {
 	var err error
-	db, err = sql.Open("sqlite3", "./data/tet-game.db?_busy_timeout=5000&_journal_mode=WAL")
+	db, err = sql.Open(
+		"sqlite3",
+		"file:./data/tet-game.db?_busy_timeout=5000&_journal_mode=DELETE&mode=rwc",
+	)
 	if err != nil {
 		log.Println("ERROR INIT DB:", err.Error())
 		return err
@@ -161,7 +164,7 @@ func SaveScore(ctx *gin.Context) {
 	)
 
 	if err != nil {
-		log.Println("ERROR EXECUTE GEN PLAYER ID:", err.Error())
+		log.Println("ERROR EXECUTE SAVE SCORE:", err.Error())
 		ctx.JSON(http.StatusInternalServerError, gin.H{
 			"success": false,
 			"data":    gin.H{},
