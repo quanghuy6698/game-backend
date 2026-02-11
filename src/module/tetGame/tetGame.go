@@ -107,6 +107,7 @@ func GetLeaderboard(c *gin.Context) {
 	for rows.Next() {
 		var item LeaderboardItem
 		if err := rows.Scan(
+			&item.PlayerID,
 			&item.Name,
 			&item.Score,
 			&item.Skin,

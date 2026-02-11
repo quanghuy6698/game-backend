@@ -4,6 +4,7 @@ const insertPlayerSQL = `INSERT INTO player (id, name) VALUES (?, ?)`
 const insertScoreSQL = `INSERT INTO score (player_id, score, skin) VALUES (?, ?, ?)`
 const getLeaderboardSQL = `
 	SELECT 
+		p.id,
 		p.name,
 		s.score,
 		s.skin 

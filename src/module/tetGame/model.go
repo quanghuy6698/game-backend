@@ -12,6 +12,7 @@ type Score struct {
 }
 
 type LeaderboardItem struct {
+	PlayerID string `json:"player_id"`
 	Name     string `json:"name"`
 	Score    int    `json:"score"`
 	Skin     string `json:"skin"`
