@@ -143,7 +143,7 @@ func GetLeaderboard(c *gin.Context) {
 /* === Save Score === */
 func SaveScore(ctx *gin.Context) {
 	var req struct {
-		PlayerID string `json:"public_id" binding:"required"`
+		PlayerID string `json:"player_id" binding:"required"`
 		Score    int64 	`json:"score" binding:"required"`
 		Skin	 string `json:"skin" binding:"required"`
 	}
